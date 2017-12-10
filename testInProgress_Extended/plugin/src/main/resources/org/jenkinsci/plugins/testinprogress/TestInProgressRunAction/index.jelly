@@ -1,0 +1,46 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:l="/lib/layout">
+<l:layout norefresh="true">
+    <st:include it="${it.build}" page="sidepanel.jelly" /> 
+    <l:main-panel>
+		<script type="text/javascript" src="${resURL}/plugin/testInProgress/jquery/js/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="${resURL}/plugin/testInProgress/jquery/js/jquery-ui-1.10.0.custom.js"></script>
+		<script type="text/javascript" src="${resURL}/plugin/testInProgress/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+		<script type="text/javascript" src="${resURL}/plugin/testInProgress/ztree/js/jquery.ztree.exhide-3.5.min.js"></script>
+		<script type="text/javascript" src="${resURL}/plugin/testInProgress/numeral/numeral.min.js"></script>
+		<script src='${resURL}/plugin/testInProgress/js/testEvents.js' type='text/javascript'/>
+		<script src='${resURL}/plugin/testInProgress/js/jenkinsAjaxEventsReceiver.js' type='text/javascript'/>
+		<script>
+		    function yes_no(){
+
+		    }
+		</script>
+		<link rel="stylesheet" type="text/css"
+		        href="${resURL}/plugin/testInProgress/css/testEvents.css" />
+		<link rel="stylesheet" type="text/css"
+		        href="${resURL}/plugin/testInProgress/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" />        
+		<link rel="stylesheet" type="text/css"
+		        href="${resURL}/plugin/testInProgress/ztree/css/zTreeStyle/zTreeStyle.css" />   
+		<div>
+			<st:bind var="remoteAction" value="${it}"/>
+			<div id="results"/>
+			<script type="text/javascript">
+				jQuery.noConflict();
+				jQuery(function() {
+					testRuns = new TestRuns("results");	
+					jenkinsAjaxEventsReceiver = new JenkinsAjaxEventsReceiver(testRuns);
+					jenkinsAjaxEventsReceiver.start();
+				 });
+
+			</script>
+		</div>
+		<div>
+		    <form method="post" action="http://awall60:cb05075ccdf537ec76f7fe4f861346bb@localhost:8080/job/mystacktest/40/stop?token=c8490d59bad7ed3fa6df3c9867c41c82">
+		        <button id="quit_button">Quit?</button>
+		    </form>
+            // TODO: Get the build number and add it to the job number instead of manually adding it
+            // TODO: Get job name
+            // TODO: Get API token(s)
+		</div>
+	</l:main-panel>
+</l:layout>
+</j:jelly>

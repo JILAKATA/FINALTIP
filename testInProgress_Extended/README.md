@@ -32,10 +32,13 @@
 		maven 3.3.9
 		Jenkins 
 		IntelliJ
-		Eclipse
-		
+		Eclipse 
 	**Ricardo**
-		 
+		Linux OS(UBUNTU)
+		Java
+		Eclipse
+		Jenkins 
+		Maven
 ***How to install the plugin***
 	**What you will need**
 		Jenkins installed on your machine
